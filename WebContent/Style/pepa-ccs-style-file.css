@@ -1,0 +1,33 @@
+/* CSS Document */
+body {
+    background: url('http://jensnordvig.com/wp-content/uploads/2013/08/Background-Jens-Slider.jpg') repeat center center;
+    font-family: "Arial CE";
+    font-size: 14px;
+    color:grey;
+}
+.header {
+    color: grey;
+    font-style: italic;
+    align-items: center;
+    
+}
+.footer {
+    color: grey;
+    font-style: italic;
+    align-items: right;
+    font-size: 8px;
+}
+
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 100px;
+}
+div.img:hover {
+    border: 1px solid #777;
+}
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
