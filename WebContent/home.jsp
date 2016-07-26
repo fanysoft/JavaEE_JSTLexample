@@ -22,11 +22,11 @@
 	
 	<!-- Varianta 2 : definice v jsp / localhost 
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-     	url="jdbc:mysql://localhost:3306/webshop" user="root"  password="katerina" /> -->
+     	url="jdbc:mysql://localhost:3306/webshop" user="root"  password="***" /> -->
     
     <!-- Varianta 3 : definice v jsp / cloud -->
     	<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-     	url="jdbc:mysql://wh19.farma.gigaserver.cz:3306/vancura_cz_" user="vancura_cz"  password="katerina" />
+     	url="jdbc:mysql://wh19.farma.gigaserver.cz:3306/vancura_cz_" user="***"  password="***" />
   
 	
 	
