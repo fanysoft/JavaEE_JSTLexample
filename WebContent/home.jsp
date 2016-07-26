@@ -14,11 +14,23 @@
 	<table class="images" border=0>
 	<c:set var="tablewidth" value="6" />
 	
-	<!--  presna definice JDBC spojeni je v Tomcat / context.xml
-	<Resource name="jdbc/webshopDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" username="root" password="" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/webshop"/> -->
-	<sql:setDataSource var="ds" dataSource="jdbc/webshopDB" />
 	
-	<sql:query dataSource="${ds}" sql="select * from images order by average_ranking desc" var="results" />
+	<!-- Varianta 1 : definice JDBC spojeni je v Tomcat / context.xml
+		<Resource name="jdbc/webshopDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" 
+		username="root" password="" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/webshop"/>
+	<sql:setDataSource var="ds" dataSource="jdbc/webshopDB" />	-->
+	
+	<!-- Varianta 2 : definice v jsp / localhost 
+		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
+     	url="jdbc:mysql://localhost:3306/webshop" user="root"  password="katerina" /> -->
+    
+    <!-- Varianta 3 : definice v jsp / cloud -->
+    	<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
+     	url="jdbc:mysql://wh19.farma.gigaserver.cz:3306/vancura_cz_" user="vancura_cz"  password="katerina" />
+  
+	
+	
+	<sql:query dataSource="${ds}" sql="select * from demo_jstl_images order by average_ranking desc" var="results" />
 	
 		<c:forEach var="db_record" items="${results.rows}" varStatus="row">
 			

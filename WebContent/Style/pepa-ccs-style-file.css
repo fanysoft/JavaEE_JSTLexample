@@ -1,18 +1,18 @@
 /* CSS Document */
 body {
-    background: url('http://jensnordvig.com/wp-content/uploads/2013/08/Background-Jens-Slider.jpg') repeat center center;
+    background: url('http://science-all.com/images/wallpapers/image-background/image-background-17.png') repeat center center;
     font-family: "Arial CE";
     font-size: 14px;
-    color:grey;
+    color:black;
 }
 .header {
-    color: grey;
+    color: black;
     font-style: italic;
     align-items: center;
     
 }
 .footer {
-    color: grey;
+    color: black;
     font-style: italic;
     align-items: right;
     font-size: 8px;
@@ -23,6 +23,7 @@ div.img {
     border: 1px solid #ccc;
     float: left;
     width: 100px;
+    color: black;
 }
 div.img:hover {
     border: 1px solid #777;
@@ -30,4 +31,5 @@ div.img:hover {
 div.desc {
     padding: 15px;
     text-align: center;
+    color: black;
 }

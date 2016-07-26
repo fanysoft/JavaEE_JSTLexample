@@ -10,11 +10,22 @@
 
 <center>
 
-	<!--  presna definice JDBC spojeni je v Tomcat / context.xml
-	<Resource name="jdbc/webshopDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" username="root" password="" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/webshop"/> -->
-	<sql:transaction dataSource="jdbc/webshopDB">
+	<!-- Varianta 1 : definice JDBC spojeni je v Tomcat / context.xml
+		<Resource name="jdbc/webshopDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" 
+		username="root" password="" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/webshop"/>
+	<sql:setDataSource var="ds" dataSource="jdbc/webshopDB" />	-->
+	
+	<!-- Varianta 2 : definice v jsp / localhost 
+		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
+     	url="jdbc:mysql://localhost:3306/webshop" user="root"  password="katerina" /> -->
+    
+    <!-- Varianta 3 : definice v jsp / cloud -->
+    	<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
+     	url="jdbc:mysql://wh19.farma.gigaserver.cz:3306/vancura_cz_" user="vancura_cz"  password="katerina" />
+	
+	<sql:transaction dataSource="${ds}">
 
-		<sql:query sql="select * from images where id=?" var="result">
+		<sql:query sql="select * from demo_jstl_images where id=?" var="result">
 			<sql:param>${param.image_id}</sql:param>
 		</sql:query>
 
@@ -29,12 +40,12 @@
 
 			<c:set scope="page" var="average_ranking" value="${newRating}" />
 
-			<sql:update sql="update images set average_ranking=? where id=?">
+			<sql:update sql="update demo_jstl_images set average_ranking=? where id=?">
 				<sql:param>${newRating}</sql:param>
 				<sql:param>${param.image_id}</sql:param>
 			</sql:update>
 
-			<sql:update sql="update images set rankings=? where id=?">
+			<sql:update sql="update demo_jstl_images set rankings=? where id=?">
 				<sql:param>${image.rankings+1}</sql:param>
 				<sql:param>${param.image_id}</sql:param>
 			</sql:update>
@@ -59,7 +70,7 @@
 
 		<br><br>
 		Hodnoceni : <fmt:formatNumber value="${average_ranking}" maxFractionDigits="1"/>
-		<br>
+		<br><br>
 		Hodnotit : 
 		<input type="radio" name="rating" value="5">5</input>
 		<input type="radio" name="rating" value="4">4</input>
